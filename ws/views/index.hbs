@@ -1,0 +1,67 @@
+<iframe style="display: none;" name="dummyframe" id="dummyframe"></iframe>
+<div class="TextWhite">
+  {{! Send messages}}
+
+  <h2 class="padding">Het webpanel van *StarCraft* (Bot)</h2>
+<form action="/sendMessage" method="POST" target="dummyframe" class="contact-form">
+    <input type="hidden" name="token" value="{{token}}" >
+    <select name="channelid" required>
+        {{#each chans}}
+            <option value="{{this.id}}">{{this.name}}</option>
+        {{/each}}
+    </select>
+    <input type="text" name="text" placeholder="Message">
+    <input type="submit" value="Send">
+</form>
+
+	<form action="/sendAnnouncement" method="POST" target="dummyframe" class="contact-form">
+		<input type="hidden" name="token" value="{{token}}" >
+		<textarea type="text" name="text" placeholder="Message"></textarea>
+		<input type="checkbox" name="mention" value="yes">Use @User
+		<input type="submit" value="Send">
+	</form>
+
+  {{! Moderation commands}}
+  <h2 class="padding">Moderatie uitvoeringen</h2>
+  <form action="/kickUser" method="POST" target="dummyframe" class="contact-form">
+    <input type="hidden" name="token" value="{{token}}" >
+    <select name="userid" required>
+        {{#each users}}
+            <option value="{{this.id}}">{{this.name}}</option>
+        {{/each}}
+    </select>
+    <input type="text" name="text" placeholder="Reason">
+    <input type="submit" value="Kick">
+  </form>
+  <form action="/banUser" method="POST" target="dummyframe" class="contact-form">
+    <input type="hidden" name="token" value="{{token}}" >
+    <select name="userid" required>
+        {{#each users}}
+            <option value="{{this.id}}">{{this.name}}</option>
+        {{/each}}
+    </select>
+    <input type="text" name="text" placeholder="Reason">
+    <input type="submit" value="Ban">
+  </form>
+  <form action="/warnUser" method="POST" target="dummyframe" class="contact-form">
+    <input type="hidden" name="token" value="{{token}}" >
+    <select name="userid" required>
+        {{#each users}}
+            <option value="{{this.id}}">{{this.name}}</option>
+        {{/each}}
+    </select>
+    <input type="text" name="text" placeholder="Reason">
+    <input type="submit" value="Warn">
+  </form>
+
+  <form class="bottom-right" action="changebackground" method="POST" target="dummyframe" class="contact-form">
+    <select name="background">
+        <option value="1">Background 1</option>
+        <option value="2">Background 2</option>
+    </select>
+    <input type="submit" value="Change">
+  </form>
+
+</div>
+
+{{! Created by GameMaster2030 }}
