@@ -1,0 +1,13 @@
+module.exports.run = async (client, message, cont) => {
+	const Discord = require("discord.js");
+	const config = require('../botsettings.json');
+	const guildNames = client.guilds.map(g => g.name).join("\n");
+	const tags = client.users.map(u=> `${u.username}#${u.discriminator}`).join("\n");
+	const smallGuilds = client.guilds.filter(g => g.memberCount < 10).map(g => g.name).join("\n");
+	message.channel.send("Users: " + tags);
+	message.channel.send(" ");
+	message.channel.send("Guild: " + guildNames);
+}
+module.exports.config = {
+  command: "list"
+}
